@@ -1,0 +1,54 @@
+.home {
+  padding: 20px;
+  text-align: center;
+
+}
+
+h1 {
+  color: #333;
+}
+
+.custRewards {
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 100px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  color: #2c3e50;
+}
+
+h3 {
+  color: #2980b9;
+}
+
+.error{
+color: #8b0000;
+}
+
+.rewardTable {
+  list-style-type: none;
+
+  padding: 0;
+}
+
+.rewardTable {
+  padding: 5px 0;
+  color: #34495e;
+}
+
+.centerTable {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchBox{
+padding: 10px;
+margin: 20px 0;
+width: 200px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}

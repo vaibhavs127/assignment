@@ -1,0 +1,48 @@
+[
+  {
+    "customer": "Vaibhav",
+    "dollerSpent": [
+      {
+        "date": "2024-01-15",
+        "amount": 120,
+        "month": 1,
+        "year": 2024
+      },
+      {
+        "date": "2024-02-25",
+        "amount": 75,
+        "month": 2,
+        "year": 2024
+      },
+      {
+        "date": "2024-02-20",
+        "amount": 45,
+        "month": 2,
+        "year": 2024
+      },
+      {
+        "date": "2024-03-5",
+        "amount": 220,
+        "month": 3,
+        "year": 2024
+      }
+    ]
+  },
+  {
+    "customer": "Prathmesh",
+    "dollerSpent": [
+      {
+        "date": "2024-01-15",
+        "amount": 70,
+        "month": 1,
+        "year": 2024
+      },
+      {
+        "date": "2024-02-25",
+        "amount": 340,
+        "month": 2,
+        "year": 2024
+      }
+    ]
+  }
+]
