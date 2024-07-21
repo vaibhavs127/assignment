@@ -2,9 +2,6 @@ import React, { useEffect } from 'react'
 
 const RewardsTable = (props) => {
 
-  useEffect(() => {
-    console.log(props, "test");
-  }, [props?.monthlyRewards])
   return (
     <>
       <table className='centerTable'>
