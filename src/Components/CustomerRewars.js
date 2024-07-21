@@ -11,13 +11,12 @@ const CustomerRewars = (props) => {
   const calculateRewards = () => {
     try {
       const monthlyRewards = {};
-      props.customerData.dollerSpent.forEach((tt) => {
-        const key = `${tt.year}-${tt.month}`
-        console.log(key, monthlyRewards);
+      props.customerData.dollerSpent.forEach((dolleSpentData) => {
+        const key = `${dolleSpentData.year}-${dolleSpentData.month}`      
         if (!monthlyRewards[key]) {
           monthlyRewards[key] = 0
         }
-        monthlyRewards[key] += calculatePoints(tt.amount)
+        monthlyRewards[key] += calculatePoints(dolleSpentData.amount)
       })
       const totalRewards = Object.values(monthlyRewards).reduce((acc, points) => acc + points, 0)
       setRewards({
@@ -26,18 +25,17 @@ const CustomerRewars = (props) => {
       })
     }
     catch (err) {
-      console.log(err);
+      throw new Error(err)
     }
   }
 
   useEffect(() => {
-    console.log(props);
     calculateRewards()
   }, [props?.customerData])
 
   return (
     <div className='custRewards'>
-      <h2>Customer Name: {props?.customerData?.customer ? props?.customerData?.customer.toUpperCase() : "-"}</h2>
+      <h2>Customer Name: {props?.customerData.customer.toUpperCase()}</h2>
       <h2>Total: {rewards.total ? rewards.total : rewards.total}</h2>
       <RewardsTable monthlyRewards={rewards.monthly} />
     </div>
