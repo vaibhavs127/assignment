@@ -9,3 +9,13 @@ In this project we used local JSON data for fetching user information
 A customer receives 2 points for every dollar spent over $100 in each transaction, plus 1 point for every dollar spent between $50 and $100 in each transaction.
 
 Users can also search the customer name.
+
+
+Feedback points
+
+1. Over use of useState hook - Done
+2. Remove console from code - Done
+3. Use meaningful names of variables and arguments - Done
+4. Unit test file is missing - I haven’t worked with any unit testing libraries in React. I perform unit testing using only the UI. I will need some time to learn unit testing with libraries.
+5. Could not find customer.json - You can find it in the public folder because we cannot access the JSON file in the src folder.
+6. Over use of optional chaining - Removed the optional chaining operator from the lines where it was not required.
