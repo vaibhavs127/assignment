@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import RewardsTable from './RewardsTable';
-import { calculatePoints } from '../helper/helper';
+import { calculatePoints, monthNames } from '../helper/helper';
 
 const CustomerRewars = (props) => {
 
-  const [rewards, setRewards] = useState({
-    monthly: {}, total: 0
-  })
+  const [rewards, setRewards] = useState([])
 
   const calculateRewards = () => {
     try {
-      const monthlyRewards = {};
-      props.customerData.dollerSpent.forEach((dolleSpentData) => {
-        const key = `${dolleSpentData.year}-${dolleSpentData.month}`      
-        if (!monthlyRewards[key]) {
-          monthlyRewards[key] = 0
-        }
-        monthlyRewards[key] += calculatePoints(dolleSpentData.amount)
+      const rewardsArray = []
+      props?.customerData?.transactions?.forEach((res) => {
+        let date = new Date(res.date);
+        let month = date.getMonth();
+        let year = date.getFullYear()
+        const monthName = monthNames[month]
+        const points = calculatePoints(res?.amount)
+        rewardsArray.push({
+          amount: res.amount,
+          year: year,
+          monthName: monthName,
+          points: points,
+        })
+
       })
-      const totalRewards = Object.values(monthlyRewards).reduce((acc, points) => acc + points, 0)
-      setRewards({
-        monthly: monthlyRewards,
-        total: totalRewards
-      })
+      setRewards(rewardsArray)
     }
     catch (err) {
       throw new Error(err)
@@ -33,11 +34,11 @@ const CustomerRewars = (props) => {
     calculateRewards()
   }, [props?.customerData])
 
+
   return (
     <div className='custRewards'>
-      <h2>Customer Name: {props?.customerData.customer.toUpperCase()}</h2>
-      <h2>Total: {rewards.total ? rewards.total : rewards.total}</h2>
-      <RewardsTable monthlyRewards={rewards.monthly} />
+      <h2>Customer Name: {props?.customerData.customerName.toUpperCase()}</h2>
+      <RewardsTable monthlyRewards={rewards} />
     </div>
   )
 }

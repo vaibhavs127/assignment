@@ -14,3 +14,28 @@ export const calculatePoints = (amount) => {
 
   return points
 }
+
+export const groupCustomerById = (array) => {
+  const grouped = {};
+
+  for (const transaction of array) {
+
+    const { customerName, customerId } = transaction;
+
+    if (!grouped[customerId]) {
+      grouped[customerId] = {
+        customerName,
+        customerId,
+        transactions: []
+      }
+    }
+    grouped[customerId].transactions.push(transaction)
+  }
+
+  return Object.values(grouped)
+}
+
+export const monthNames = [
+  "January", "February", "March", "April", "May", "June", "July",
+  "August", "September", "October", "November", "December"
+]

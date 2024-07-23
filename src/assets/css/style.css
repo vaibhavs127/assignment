@@ -13,7 +13,7 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 15px;
-  margin: 10px 100px;
+  margin: 10px 20px;
   background-color: #f9f9f9;
 }
 
@@ -51,4 +51,15 @@ margin: 20px 0;
 width: 200px;
 border: 1px solid #ccc;
 border-radius: 4px;
+}
+
+.customerRewards{
+  display: flex;
+  justify-content:flex-start;
+}
+
+table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 4px;
 }

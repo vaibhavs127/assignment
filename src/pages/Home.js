@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import CustomerRewars from '../Components/CustomerRewars';
 import "../assets/css/style.css"
+import { groupCustomerById, groupTransactionById } from '../helper/helper';
 
 const Home = (props) => {
   const [data,setData] = useState({
@@ -23,7 +24,7 @@ const Home = (props) => {
       axios.get("/Customer.json")
         .then((ele) => {
           if (ele?.status === 200) {
-            resolve(ele.data)
+            resolve(groupCustomerById(ele.data))
           }
           else {
             reject("No Records Found")
@@ -45,7 +46,7 @@ const Home = (props) => {
   }
 
   const handleSearch = (value) => {
-    const filterd = data?.customerData?.filter((customer) => customer.customer.toLowerCase().includes(value.toLowerCase()))
+    const filterd = data?.customerData?.filter((customer) => customer.customerName.toLowerCase().includes(value.toLowerCase()))
     setData({
         ...data,
         searchData:value,        
@@ -61,11 +62,11 @@ const Home = (props) => {
         <input type='text' placeholder='Search customer name' value={data.searchData} onChange={(e) => {
           handleSearch(e?.target?.value)
         }} className='searchBox' />
-        {data.errorMsg ? <h4 className='error'>{data.errorMsg}</h4>
+        {data.errorMsg ? <h2 className='error'>{data.errorMsg}</h2>
           :
-          <div>
+          <div className='customerRewards'>
             {data?.filterData?.length > 0 ? data.filterData.map((res) => (
-              <CustomerRewars key={res.customer} customerData={res} />
+              <CustomerRewars key={res.customerName} customerData={res} />
             )) : <h3>No Data Found</h3>}
           </div>
         }
