@@ -3,7 +3,7 @@ import RewardsTable from './RewardsTable';
 import { calculatePoints, monthNames } from '../helper/helper';
 
 const CustomerRewars = (props) => {
-
+  //useSate used for set the perticuler user information
   const [rewards, setRewards] = useState([])
 
   const calculateRewards = () => {
@@ -11,10 +11,10 @@ const CustomerRewars = (props) => {
       const rewardsArray = []
       props?.customerData?.transactions?.forEach((res) => {
         let date = new Date(res.date);
-        let month = date.getMonth();
-        let year = date.getFullYear()
-        const monthName = monthNames[month]
-        const points = calculatePoints(res?.amount)
+        let month = date.getMonth(); //get month from date
+        let year = date.getFullYear() //get year from date
+        const monthName = monthNames[month] //monthNames array used for find month name from month index
+        const points = calculatePoints(res?.amount) //calculate the points for every doller spent
         rewardsArray.push({
           amount: res.amount,
           year: year,
@@ -31,6 +31,7 @@ const CustomerRewars = (props) => {
   }
 
   useEffect(() => {
+    //function will call when its dependency value change
     calculateRewards()
   }, [props?.customerData])
 
@@ -38,6 +39,7 @@ const CustomerRewars = (props) => {
   return (
     <div className='custRewards'>
       <h2>Customer Name: {props?.customerData.customerName.toUpperCase()}</h2>
+      {/**Display individula user data in table format */}
       <RewardsTable monthlyRewards={rewards} />
     </div>
   )
