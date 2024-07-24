@@ -8,8 +8,14 @@ const CustomerRewars = (props) => {
 
   const calculateRewards = () => {
     try {
+      if (!Array.isArray(props.customerData.transactions)) {
+        throw new Error("Invalid Array")
+      }
       const rewardsArray = []
-      props?.customerData?.transactions?.forEach((res) => {
+      props.customerData.transactions?.forEach((res) => {
+        if (!res.date || !res.amount) {
+          throw new Error("Date and Amount is required")
+        }
         let date = new Date(res.date);
         let month = date.getMonth(); //get month from date
         let year = date.getFullYear() //get year from date
@@ -32,7 +38,10 @@ const CustomerRewars = (props) => {
 
   useEffect(() => {
     //function will call when its dependency value change
-    calculateRewards()
+    if (props?.customerData?.transactions) {
+      calculateRewards()
+    }
+
   }, [props?.customerData])
 
 

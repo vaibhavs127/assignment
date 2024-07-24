@@ -1,4 +1,8 @@
 export const calculatePoints = (amount) => {
+  if (typeof amount !== "number") {
+    throw new Error("Invalid Amount")
+  }
+
   if (amount < 0) {
     return 0;
   }
@@ -16,6 +20,10 @@ export const calculatePoints = (amount) => {
 }
 
 export const groupCustomerById = (array) => {
+
+  if (!Array.isArray(array)) {
+    throw new Error("Invalid Array")
+  }
   const grouped = {};
 
   for (const transaction of array) {

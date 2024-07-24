@@ -68,7 +68,7 @@ const Home = (props) => {
       <div className='home'>
         <h1>Customer Rewards</h1>
         {/** Search Box section*/}
-        <input type='text' placeholder='Search customer name' value={data.searchData} onChange={(e) => {
+        <input type='text' placeholder='Search customer name' key={"search"} value={data.searchData} onChange={(e) => {
           handleSearch(e?.target?.value)
         }} className='searchBox' />
         {/** Error Message section */}
@@ -77,7 +77,7 @@ const Home = (props) => {
           <div className='customerRewards'>
             {/** Customer Rewards section */}
             {data?.filterData?.length > 0 ? data.filterData.map((res) => (
-              <CustomerRewars key={res.customerName} customerData={res} />
+              <CustomerRewars customerData={res} />
             )) : <h3>No Data Found</h3>}
           </div>
         }

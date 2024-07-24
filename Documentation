@@ -1,21 +1,57 @@
 Charter assignment
 
-To run the project
-1. npm install
-2. npm start
+Overview
 
-In this project we used local JSON data for fetching user information
+This project is a React application that calculates and displays customer rewards based on their transaction history. It display the transactions by year, calculate points and display in table format
 
-A customer receives 2 points for every dollar spent over $100 in each transaction, plus 1 point for every dollar spent between $50 and $100 in each transaction.
+Components
 
-Users can also search the customer name.
+1. Home Component
+Description: In this component we used axios for Simulate API call and set data. Users can also search the customer name.
+
+2. CustomerRewars Component
+Description: This component calculates the rewards for each customer based on their transactions and display the results.
+
+Props: "customerData" Object containing customer details and array of transaction
+State: "rewards" Array of objects containing calculated rewards details per transaction
+
+Functionality: Calculates points for each transaction and stores the data in rewards state. and useEffect is used to recalculate rewards when customerData changes.
+
+3. RewardsTable Component
+Description: This component displays the rewards data in a table format.
+
+Props: monthlyRewards an array of reward objects contaning year,monthName,amount and points
+State: yearData Array of objects containing year wise transaction data
+
+Function: calculateTotal function calculate total amount spent.
+          getYearData used to display year wise structure
+
+Functionality: Groups the transaction by year and display the data in table. rowSpan is used to avoid repeating year.
 
 
-Feedback points
+Json should have following structure:
 
-1. Over use of useState hook - Done
-2. Remove console from code - Done
-3. Use meaningful names of variables and arguments - Done
-4. Unit test file is missing - I haven’t worked with any unit testing libraries in React. I perform unit testing using only the UI. I will need some time to learn unit testing with libraries.
-5. Could not find customer.json - You can find it in the public folder because we cannot access the JSON file in the src folder.
-6. Over use of optional chaining - Removed the optional chaining operator from the lines where it was not required.
+{
+    "date": "2023-01-15",
+    "amount": 130,
+    "customerName": "Vaibhav",
+    "customerId": "vss1"
+}
+
+
+
+Installation and Usage
+
+1. Clone the repository:
+    git clone repository-url
+    cd project-directory
+
+2. Install Dependencies
+    npm install
+
+3. Run the Project
+    npm start
+
+
+
+
